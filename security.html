@@ -869,6 +869,28 @@
  .reveal.in{opacity:1;transform:none}
  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
+<style>
+ /* mobile nav (hamburger) */
+ .nav-toggle{display:none;background:none;border:0;padding:0;margin-left:6px;cursor:pointer;width:40px;height:40px;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:var(--text)}
+ .nav-toggle span{display:block;width:22px;height:2px;background:currentColor;border-radius:2px;transition:transform .28s ease,opacity .2s ease}
+ .nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+ .nav.open .nav-toggle span:nth-child(2){opacity:0}
+ .nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+ @media(max-width:960px){
+  .nav-toggle{display:flex}
+  .nav-links{
+   display:flex !important;position:absolute;top:100%;left:0;right:0;
+   flex-direction:column;align-items:stretch;gap:0;
+   background:var(--bg-elevated);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+   padding:4px 0;max-height:0;overflow:hidden;opacity:0;visibility:hidden;
+   transition:max-height .32s ease,opacity .25s ease,visibility .25s ease;
+   box-shadow:0 26px 50px -28px rgba(0,0,0,.55);
+  }
+  .nav.open .nav-links{max-height:75vh;opacity:1;visibility:visible}
+  .nav-links a{padding:14px var(--gutter);font-size:15.5px;color:var(--text);border-bottom:1px solid var(--border-faint)}
+  .nav-links a:last-child{border-bottom:0}
+ }
+</style>
 <nav class="nav">
  <div class="nav-inner">
  <a href="index.html" class="nav-brand" aria-label="Vision Finance, home">
@@ -885,6 +907,7 @@
  <div class="nav-cta">
  <a href="#" class="btn btn-ghost">Sign in</a>
  <a href="pricing.html" class="btn btn-primary">Start free <span class="arrow">→</span></a>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
  </div>
  </div>
 </nav>
@@ -1138,6 +1161,17 @@
  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
  targets.forEach(el => io.observe(el));
  }
+</script>
+<script>
+ (function(){
+  var t=document.querySelector('.nav-toggle'); if(!t) return;
+  var nav=t.closest('.nav');
+  function close(){ nav.classList.remove('open'); t.setAttribute('aria-expanded','false'); }
+  t.addEventListener('click',function(e){ e.stopPropagation(); var o=nav.classList.toggle('open'); t.setAttribute('aria-expanded',o?'true':'false'); });
+  nav.querySelectorAll('.nav-links a').forEach(function(a){ a.addEventListener('click',close); });
+  document.addEventListener('click',function(e){ if(nav.classList.contains('open') && !nav.contains(e.target)) close(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
+ })();
 </script>
 </body>
 </html>
