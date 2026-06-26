@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About · Vision Finance</title>
-<meta name="description" content="Why we built Vision: tax-smart money for households who think long-term, with privacy built in and the tax bill shown before you sell.">
+<title>Trust Center · Vision Finance</title>
+<meta name="description" content="Vision Finance Trust Center: how we protect your data (security), what we collect (privacy), and how we make sure everyone can use Vision (accessibility).">
 <!-- Favicon: tech team to add proper .ico or .svg file -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -914,84 +914,126 @@
  </div>
  </div>
 </nav>
+
 <!-- ═══════════════ PAGE HERO ═══════════════ -->
 <header class="pg-hero">
- <div class="pg-glow" aria-hidden="true"></div>
  <div class="container">
- <div class="pg-eyebrow">About Vision</div>
- <h1>We built the app <em>we wished we'd had.</em></h1>
- <p class="pg-lede">Vision is tax-smart money for households who think long-term. One clear picture of your net worth, your budget, and the tax bill before you sell.</p>
+ <div class="pg-eyebrow">Trust Center</div>
+ <h1>Security, privacy, and accessibility &mdash; <em>in one place.</em></h1>
+ <p class="pg-lede">How Vision handles your data, how we protect it, and how we make sure everyone can use the product. The short version of each policy is below; the full legal text lives on the app at visionfinance.app.</p>
  </div>
 </header>
 
-<!-- ═══════════════ FOUNDER NOTE ═══════════════ -->
-<section class="founder">
- <div class="container">
- <div class="founder-inner">
- <div class="founder-eyebrow">A note from the founder</div>
- <p class="founder-quote">
- "I was tired of being reactive &mdash; trading through the year, then waiting on a 1099 to learn what it cost me. So we built Vision to flip that: <em>a proactive financial vision consumers have never had before,</em> with the data to make informed decisions in real time."
- </p>
- <div class="founder-sig">
- Riley Smith<br>
- <small>Founder &amp; CEO · Vision Finance</small>
- </div>
- </div>
- </div>
-</section>
-
-<!-- ═══════════════ STORY ═══════════════ -->
+<!-- ═══════════════ ACCORDION ═══════════════ -->
 <section>
  <div class="container">
  <div class="section-head">
- <div class="section-num"><strong>·</strong> &nbsp;·&nbsp; Why we exist</div>
- <div>
- <h2 class="section-title">Most money apps show you the <em>past. We show you the move.</em></h2>
+  <div class="section-num"><strong>·</strong> &nbsp;·&nbsp; Pick a topic</div>
+  <div>
+   <h2 class="section-title">Three policies, <em>three clicks.</em></h2>
+  </div>
  </div>
- </div>
- <div class="story">
- <p>Tracking apps are good at one thing: telling you what already happened. Here's what you spent. Here's what you have. But the moment that actually costs you money is the one in front of you, the sale you're about to make, the card you're about to swipe, the bill that lands next April.</p>
- <p>Vision is built around that moment. <strong>Connect your banks, cards, and brokerages through Plaid</strong>, and Vision turns the noise into one picture you can read over coffee. Then, before you sell, the Sell Simulator shows you the capital-gains tax first, so April never surprises you.</p>
- <p>It's built for <strong>households, not just individuals</strong>. Mine, Yours, and Ours, so two people can share the parts of their money that are shared and keep private the parts that aren't. And it's built privacy-first: your credentials never touch our servers, and we never sell your data.</p>
+
+ <div class="trust-accordion">
+
+  <details class="trust-item">
+   <summary>
+    <span class="trust-eyebrow" style="color:#22C55E">SECURITY</span>
+    <span class="trust-title">How we protect your data</span>
+    <span class="trust-chevron">+</span>
+   </summary>
+   <div class="trust-body">
+    <h3>Bank credentials never touch our servers</h3>
+    <p>Account linking goes through Plaid &mdash; the same connection layer that powers Venmo, Robinhood, Wealthfront, and most major fintech apps. Your bank username and password are entered into Plaid&apos;s flow, not ours, and we never see them. Vision only ever holds the read-only access token Plaid hands back.</p>
+
+    <h3>Encryption everywhere</h3>
+    <ul>
+     <li><strong>In transit:</strong> every request is HTTPS / TLS 1.3. No plaintext anywhere.</li>
+     <li><strong>At rest:</strong> Plaid access tokens are encrypted with AES-256-GCM before being stored in Upstash Redis. The encryption key lives in Vercel&apos;s secrets manager and is rotated quarterly.</li>
+     <li><strong>Backups:</strong> automated daily backups are encrypted with the same key, retained for 30 days, and stored in a separate availability zone.</li>
+    </ul>
+
+    <h3>Auth</h3>
+    <p>Sign in with Apple, Google, or email + password. Sessions use Firebase Authentication; tokens rotate hourly. We support biometric unlock (Face ID / Touch ID) on iOS.</p>
+
+    <h3>We don&apos;t sell your data</h3>
+    <p>No ads, no lead-gen, no data brokers. Vision is funded entirely by user subscriptions ($4.99/mo or $39.99/yr). The full vendor list and what each one sees is enumerated in the Privacy Policy (next section).</p>
+
+    <h3>Vulnerability disclosure</h3>
+    <p>If you find a security issue, please report it to <a href="mailto:security@visionfinance.app">security@visionfinance.app</a>. We acknowledge every report within 24 hours and patch high-severity issues within 7 days.</p>
+   </div>
+  </details>
+
+  <details class="trust-item">
+   <summary>
+    <span class="trust-eyebrow" style="color:#5C7CFA">PRIVACY POLICY</span>
+    <span class="trust-title">What we collect and why</span>
+    <span class="trust-chevron">+</span>
+   </summary>
+   <div class="trust-body">
+    <h3>Short version</h3>
+    <ul>
+     <li>We collect what we need to run the app: your name, email, the accounts you connect, and the transactions inside them.</li>
+     <li>We do not sell, rent, share, or trade any of it. Period.</li>
+     <li>We use Plaid for bank linking, Stripe for billing, RevenueCat for iOS billing, Firebase for auth, PostHog for product analytics (opt-in), Sentry for crash reports (opt-in), and Cloudflare + Vercel for hosting.</li>
+     <li>You can export your data as CSV from Settings &rarr; Your Data at any time.</li>
+     <li>You can delete your account and everything associated with it from Settings &rarr; Delete Account.</li>
+     <li>Cookie + analytics consent is honored on first launch and can be changed any time from Settings &rarr; Cookie settings.</li>
+    </ul>
+    <p>The full Privacy Policy &mdash; including every vendor, every data class, every legal basis, and your rights under CCPA, GDPR, and similar laws &mdash; lives on the app.</p>
+    <p><a href="privacy.html" class="trust-cta">Read the full Privacy Policy &rarr;</a></p>
+   </div>
+  </details>
+
+  <details class="trust-item">
+   <summary>
+    <span class="trust-eyebrow" style="color:#F59E0B">ACCESSIBILITY STATEMENT</span>
+    <span class="trust-title">How we make sure everyone can use Vision</span>
+    <span class="trust-chevron">+</span>
+   </summary>
+   <div class="trust-body">
+    <h3>Short version</h3>
+    <ul>
+     <li>Vision targets <strong>WCAG 2.1 Level AA</strong>. Self-attested partial conformance &mdash; most of the app is verified clean, with documented gaps.</li>
+     <li>Every interactive element is keyboard-reachable. Screen-reader labels on every form input. Color contrast meets 4.5:1 (body) and 3:1 (large text + graphics).</li>
+     <li>Color is never the only indicator: gains and losses use a +/- sign in addition to color. Status badges include text, not just dots.</li>
+     <li>Tested against VoiceOver (macOS &amp; iOS), TalkBack (Android), NVDA, and JAWS.</li>
+     <li>No accessibility-overlay widgets. We fix the source, not the symptom.</li>
+    </ul>
+    <p>If you can&apos;t use something, please tell us: <a href="mailto:accessibility@visionfinance.app">accessibility@visionfinance.app</a>. We acknowledge every report within 5 business days.</p>
+    <p><a href="accessibility.html" class="trust-cta">Read the full Accessibility Statement &rarr;</a></p>
+   </div>
+  </details>
+
  </div>
  </div>
 </section>
 
-<!-- ═══════════════ WHAT WE BELIEVE ═══════════════ -->
-<section>
- <div class="container">
- <div class="section-head">
- <div class="section-num"><strong>·</strong> &nbsp;·&nbsp; What we believe</div>
- <div>
- <h2 class="section-title">A few things we <em>won't compromise on.</em></h2>
- </div>
- </div>
- <div class="principles">
- <div class="principle">
- <div class="p-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 8V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M9 13l2 2 4-4"/></svg></div>
- <h3>Privacy is the product</h3>
- <p>We built the app so we can't see what we don't need to, and can't sell what we do. Your bank credentials never touch our servers.</p>
- </div>
- <div class="principle">
- <div class="p-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 12a9 9 0 1 1 18 0 9 9 0 0 1-18 0z"/><path d="M12 7v5l3 2"/></svg></div>
- <h3>Show the bill, not just the gain</h3>
- <p>Every brokerage shows your profit. We show what you'll owe on it, before you make the move, not after.</p>
- </div>
- <div class="principle">
- <div class="p-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2 20c0-3 2.7-5 6-5M22 20c0-3-2.7-5-6-5"/></svg></div>
- <h3>Built for households</h3>
- <p>Money is rarely a solo sport. Mine, Yours, and Ours is core to Vision, not an afterthought bolted on later.</p>
- </div>
- <div class="principle">
- <div class="p-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 19h16M6 19V9M12 19V5M18 19v-7"/></svg></div>
- <h3>Plainspoken, always</h3>
- <p>No jargon, no hype, no impossible promises. Just a clear picture and the next honest move.</p>
- </div>
- </div>
- </div>
-</section>
-
-
+<style>
+.trust-accordion{display:flex;flex-direction:column;gap:14px;margin-top:48px}
+.trust-item{background:rgba(92,124,250,0.04);border:1px solid rgba(92,124,250,0.18);border-radius:14px;overflow:hidden;transition:border-color 0.15s ease}
+.trust-item[open]{border-color:rgba(92,124,250,0.4)}
+.trust-item summary{padding:20px 24px;cursor:pointer;display:flex;align-items:center;gap:16px;list-style:none;user-select:none;font-family:inherit}
+.trust-item summary::-webkit-details-marker{display:none}
+.trust-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;flex-shrink:0;width:200px}
+.trust-title{flex:1;font-size:17px;font-weight:500;color:var(--text)}
+.trust-chevron{font-size:20px;font-weight:300;color:var(--text-faint);transition:transform 0.2s ease}
+.trust-item[open] .trust-chevron{transform:rotate(45deg)}
+.trust-body{padding:0 24px 24px;color:var(--text-faint);font-size:14.5px;line-height:1.7}
+.trust-body h3{font-size:15.5px;font-weight:600;color:var(--text);margin:18px 0 8px}
+.trust-body h3:first-child{margin-top:8px}
+.trust-body ul{padding-left:24px;margin:8px 0 12px}
+.trust-body li{margin-bottom:6px}
+.trust-body a{color:var(--primary,#5C7CFA);text-decoration:underline}
+.trust-body strong{color:var(--text);font-weight:600}
+.trust-cta{display:inline-block;margin-top:8px;font-weight:600;text-decoration:none !important;border-bottom:2px solid currentColor;padding-bottom:1px}
+@media (max-width:780px){
+ .trust-item summary{flex-direction:column;align-items:flex-start;gap:6px;padding:18px 18px}
+ .trust-eyebrow{width:auto}
+ .trust-chevron{position:absolute;right:18px;top:18px}
+ .trust-body{padding:0 18px 18px}
+}
+</style>
 
 <!-- ═══════════════ FOOTER ═══════════════ -->
 <footer>
