@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About · Vision Finance</title>
-<meta name="description" content="Why we built Vision: tax-smart money for households who think long-term, with privacy built in and the tax bill shown before you sell.">
+<title>Accessibility Statement · Vision Finance</title>
+<meta name="description" content="Vision Finance's commitment to WCAG 2.1 AA accessibility, what we test, known limitations, and how to give feedback.">
 <!-- Favicon: tech team to add proper .ico or .svg file -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -914,84 +914,134 @@
  </div>
  </div>
 </nav>
+
 <!-- ═══════════════ PAGE HERO ═══════════════ -->
 <header class="pg-hero">
- <div class="pg-glow" aria-hidden="true"></div>
  <div class="container">
- <div class="pg-eyebrow">About Vision</div>
- <h1>We built the app <em>we wished we'd had.</em></h1>
- <p class="pg-lede">Vision is tax-smart money for households who think long-term. One clear picture of your net worth, your budget, and the tax bill before you sell.</p>
+ <div class="pg-eyebrow">Legal</div>
+ <h1>Accessibility Statement</h1>
+ <p class="pg-lede legal-meta-lede">Vision Finance &bull; Effective: June 25, 2026</p>
  </div>
 </header>
 
-<!-- ═══════════════ FOUNDER NOTE ═══════════════ -->
-<section class="founder">
+<!-- ═══════════════ LEGAL BODY ═══════════════ -->
+<section class="legal-body-section">
  <div class="container">
- <div class="founder-inner">
- <div class="founder-eyebrow">A note from the founder</div>
- <p class="founder-quote">
- "I was tired of being reactive &mdash; trading through the year, then waiting on a 1099 to learn what it cost me. So we built Vision to flip that: <em>a proactive financial vision consumers have never had before,</em> with the data to make informed decisions in real time."
- </p>
- <div class="founder-sig">
- Riley Smith<br>
- <small>Founder &amp; CEO · Vision Finance</small>
- </div>
- </div>
- </div>
-</section>
-
-<!-- ═══════════════ STORY ═══════════════ -->
+  <div class="legal-content">
 <section>
- <div class="container">
- <div class="section-head">
- <div class="section-num"><strong>·</strong> &nbsp;·&nbsp; Why we exist</div>
- <div>
- <h2 class="section-title">Most money apps show you the <em>past. We show you the move.</em></h2>
- </div>
- </div>
- <div class="story">
- <p>Tracking apps are good at one thing: telling you what already happened. Here's what you spent. Here's what you have. But the moment that actually costs you money is the one in front of you, the sale you're about to make, the card you're about to swipe, the bill that lands next April.</p>
- <p>Vision is built around that moment. <strong>Connect your banks, cards, and brokerages through Plaid</strong>, and Vision turns the noise into one picture you can read over coffee. Then, before you sell, the Sell Simulator shows you the capital-gains tax first, so April never surprises you.</p>
- <p>It's built for <strong>households, not just individuals</strong>. Mine, Yours, and Ours, so two people can share the parts of their money that are shared and keep private the parts that aren't. And it's built privacy-first: your credentials never touch our servers, and we never sell your data.</p>
- </div>
+          <h2>1. Our Commitment</h2>
+          <p>Vision Finance is committed to making our app usable by everyone, including people with disabilities. We design, build, and maintain visionfinance.app and our iOS app to the Web Content Accessibility Guidelines (WCAG) 2.1 at the AA conformance level &mdash; the standard most U.S. regulators and the Americans with Disabilities Act (ADA) point to.</p>
+          <p>Accessibility is a feature, not a checklist. We treat any user who can't use the app the same as a user hitting a bug: it's our problem to fix.</p>
+        </section>
+
+        <section>
+          <h2>2. Conformance Status</h2>
+          <p>We self-attest <strong>partial conformance</strong> with WCAG 2.1 AA at this time. "Partial" means the substantial majority of the app meets the standard, with known gaps documented in Section 5 below. We do not claim full conformance because no live web app of this size is ever completely free of accessibility regressions; we report what we test and what we know.</p>
+          <p>The following routes have been verified clean against an automated axe-core scan as of the effective date above: <code>/</code>, <code>/login</code>, <code>/vfin-signup</code>, <code>/pricing</code>, <code>/budget</code>, <code>/cashflow</code>, <code>/transactions</code>, <code>/cards</code>, <code>/settings</code>, <code>/net-worth</code>.</p>
+        </section>
+
+        <section>
+          <h2>3. What This Means in Practice</h2>
+          <ul>
+            <li><strong>Keyboard:</strong> Every interactive element is reachable and operable using a keyboard alone. A "Skip to main content" link appears as the first focusable element on every page so keyboard users can bypass the navigation.</li>
+            <li><strong>Screen readers:</strong> All form inputs are programmatically labeled. Errors, status changes, and dynamic content are announced through ARIA live regions.</li>
+            <li><strong>Contrast:</strong> Text and meaningful UI elements meet WCAG AA contrast ratios (4.5:1 for body text, 3:1 for large text and graphical objects).</li>
+            <li><strong>Color is never the sole indicator:</strong> Gains and losses use both a color and a <code>+</code> / <code>&minus;</code> sign prefix. Status badges include text, not just dots.</li>
+            <li><strong>Motion:</strong> Animations respect the operating-system <code>prefers-reduced-motion</code> setting.</li>
+            <li><strong>Resizing:</strong> Text can be resized up to 200% without loss of content or functionality.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>4. Compatibility</h2>
+          <p>Vision Finance is tested against, and intended to be compatible with, the latest versions of:</p>
+          <ul>
+            <li>Browsers: Chrome, Safari, Firefox, Edge (current and one prior major version)</li>
+            <li>Mobile: Safari on iOS 16+ and Chrome on Android 12+</li>
+            <li>Screen readers: VoiceOver (macOS &amp; iOS), TalkBack (Android), NVDA (Windows), JAWS (Windows)</li>
+          </ul>
+          <p>We have not specifically tested against older or specialty browsers; the app may still work but is not guaranteed.</p>
+        </section>
+
+        <section>
+          <h2>5. Known Limitations</h2>
+          <p>We try to publish what's broken before someone has to find it. Current known gaps:</p>
+          <ul>
+            <li><strong>Some charts</strong> in the Net Worth and Holding Detail views convey information primarily through visual position. A text summary is available immediately below each chart for screen-reader users; we plan to add an interactive data-table view in a future release.</li>
+            <li><strong>The Plaid Link bank-connection flow</strong> is rendered by Plaid Inc., not by us. Its accessibility is governed by Plaid's own conformance, which we cannot control directly. Feedback about Plaid Link accessibility should also be sent to <a href="mailto:accessibility@plaid.com">accessibility@plaid.com</a>.</li>
+            <li><strong>PDF exports</strong> from the Monthly Recap are generated by a third-party library and may not be tagged for screen-reader navigation in the same way the web pages are. We are evaluating alternatives.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>6. How We Test</h2>
+          <p>We combine three layers:</p>
+          <ul>
+            <li><strong>Automated:</strong> axe-core runs on every pull request against a frozen baseline. New violations fail the build.</li>
+            <li><strong>Manual:</strong> Periodic keyboard-only navigation and screen-reader walkthroughs of new features before they ship.</li>
+            <li><strong>User-reported:</strong> Anything that arrives at the feedback email below is treated as a real issue, not a feature request.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>7. Standards We Target</h2>
+          <ul>
+            <li>Web Content Accessibility Guidelines (WCAG) 2.1, Level AA</li>
+            <li>Section 508 of the Rehabilitation Act (alignment, not formal certification)</li>
+            <li>Americans with Disabilities Act (ADA) Title III, as interpreted by recent DOJ guidance for web services</li>
+          </ul>
+          <p>We are not, and do not use, an accessibility-overlay widget (such as accessiBe or UserWay). These products have repeatedly failed to bring sites into compliance and have introduced new accessibility issues of their own. We build accessibility into the source code instead.</p>
+        </section>
+
+        <section>
+          <h2>8. Feedback &amp; Reporting</h2>
+          <p>If you can't access something in Vision Finance, or if any part of the app is difficult to use because of a disability, please tell us:</p>
+          <p>
+            <a href="mailto:accessibility@visionfinance.app">accessibility@visionfinance.app</a>
+          </p>
+          <p>We acknowledge every report within <strong>5 business days</strong> and follow up with either a fix, a target date for a fix, or an honest explanation of why we can't fix it. Please include the page or feature, what you were trying to do, and what assistive technology you were using if relevant.</p>
+        </section>
+
+        <section>
+          <h2>9. Formal Complaint Pathway</h2>
+          <p>If you believe Vision Finance has failed to provide accessible content or features and the issue has not been resolved through the feedback channel above, you may file a complaint with the U.S. Department of Justice (DOJ) Civil Rights Division under the Americans with Disabilities Act:</p>
+          <p>
+            <a href="https://www.ada.gov/file-a-complaint/" target="_blank" rel="noopener">https://www.ada.gov/file-a-complaint/</a>
+          </p>
+        </section>
+
+        <section>
+          <h2>10. Statement Version &amp; Review Cycle</h2>
+          <p>This statement is reviewed at least annually and any time the app undergoes a material design or platform change. The "Effective" date at the top of this page reflects the most recent review.</p>
+        </section>
+
+        <section>
+          <h2>11. Contact</h2>
+          <p>
+            Vision Financial, Inc. (a Delaware corporation)<br/>
+            Riley Smith, Founder &amp; Lead Developer<br/>
+            <a href="mailto:accessibility@visionfinance.app">accessibility@visionfinance.app</a>
+          </p>
+        </section>
+  </div>
  </div>
 </section>
 
-<!-- ═══════════════ WHAT WE BELIEVE ═══════════════ -->
-<section>
- <div class="container">
- <div class="section-head">
- <div class="section-num"><strong>·</strong> &nbsp;·&nbsp; What we believe</div>
- <div>
- <h2 class="section-title">A few things we <em>won't compromise on.</em></h2>
- </div>
- </div>
- <div class="principles">
- <div class="principle">
- <div class="p-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 8V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M9 13l2 2 4-4"/></svg></div>
- <h3>Privacy is the product</h3>
- <p>We built the app so we can't see what we don't need to, and can't sell what we do. Your bank credentials never touch our servers.</p>
- </div>
- <div class="principle">
- <div class="p-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 12a9 9 0 1 1 18 0 9 9 0 0 1-18 0z"/><path d="M12 7v5l3 2"/></svg></div>
- <h3>Show the bill, not just the gain</h3>
- <p>Every brokerage shows your profit. We show what you'll owe on it, before you make the move, not after.</p>
- </div>
- <div class="principle">
- <div class="p-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2 20c0-3 2.7-5 6-5M22 20c0-3-2.7-5-6-5"/></svg></div>
- <h3>Built for households</h3>
- <p>Money is rarely a solo sport. Mine, Yours, and Ours is core to Vision, not an afterthought bolted on later.</p>
- </div>
- <div class="principle">
- <div class="p-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 19h16M6 19V9M12 19V5M18 19v-7"/></svg></div>
- <h3>Plainspoken, always</h3>
- <p>No jargon, no hype, no impossible promises. Just a clear picture and the next honest move.</p>
- </div>
- </div>
- </div>
-</section>
-
-
+<style>
+.legal-meta-lede{font-size:14px;color:var(--text-faint);margin-top:8px}
+.legal-body-section{padding-top:0}
+.legal-body-section .container{max-width:760px}
+.legal-content section{margin-bottom:32px}
+.legal-content h2{font-family:inherit;font-size:19px;font-weight:600;color:var(--text);margin:0 0 12px;letter-spacing:-0.01em}
+.legal-content h3{font-size:15.5px;font-weight:600;color:var(--text);margin:16px 0 8px}
+.legal-content p{font-size:14.5px;line-height:1.7;color:var(--text-faint);margin:0 0 10px}
+.legal-content ul{padding-left:24px;margin:8px 0 14px}
+.legal-content li{font-size:14.5px;line-height:1.7;color:var(--text-faint);margin-bottom:6px}
+.legal-content a{color:var(--primary,#5C7CFA);text-decoration:underline}
+.legal-content a:hover{text-decoration:none}
+.legal-content strong{color:var(--text);font-weight:600}
+.legal-content code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em;background:rgba(148,163,184,0.10);padding:1px 6px;border-radius:4px;color:var(--text)}
+</style>
 
 <!-- ═══════════════ FOOTER ═══════════════ -->
 <footer>
