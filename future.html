@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Future Vision · Vision Finance</title>
+<title>Retirement Vision · Vision Finance</title>
 <meta name="description" content="What's next for Vision Finance: the roadmap for the tax-smart money app built for households who think long-term.">
 <!-- Favicon: tech team to add proper .ico or .svg file -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -551,7 +551,8 @@
  .roadmap input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--primary);border:3px solid var(--surface);box-shadow:0 0 0 1px var(--primary),0 4px 10px -2px var(--primary-glow);cursor:pointer}
  .roadmap input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--primary);border:3px solid var(--surface);cursor:pointer}
  .roadmap .rate input[type=range]::-webkit-slider-thumb{background:var(--positive);box-shadow:0 0 0 1px var(--positive),0 4px 10px -2px rgba(20,184,166,0.5)}
- .rw-note{font-size:11.5px;color:var(--text-faint);line-height:1.5;margin-top:18px}
+ .rw-verdict{margin-top:14px;padding:12px 14px;background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.18);border-radius:10px;font-size:13.5px;line-height:1.55;color:var(--text-faint)}
+.rw-note{font-size:11.5px;color:var(--text-faint);line-height:1.5;margin-top:18px}
  /* order-to-invest horizontal timeline */
  .invest-order{margin-top:66px}
  .io-head{text-align:center;margin-bottom:38px}
@@ -865,8 +866,9 @@
  </a>
  <div class="nav-links">
  <a href="index.html">Overview</a>
- <a href="future.html" aria-current="page" style="color:var(--primary)">Future Vision</a>
+ <a href="future.html" aria-current="page" style="color:var(--primary)">Retirement Vision</a>
  <a href="pricing.html">Pricing</a>
+ <a href="couples.html">Couples</a>
  <a href="security.html">Security</a>
  <a href="about.html">About</a>
  <a href="download.html">Download</a>
@@ -890,7 +892,7 @@
 <header class="pg-hero">
  <div class="pg-glow" aria-hidden="true"></div>
  <div class="container">
- <div class="pg-eyebrow">Future Vision</div>
+ <div class="pg-eyebrow">Retirement Vision</div>
  <h1>Envision your <em>future.</em></h1>
  <p class="pg-lede">See where steady investing can take you over time &mdash; then follow the roadmap for where your next dollar should go.</p>
  </div>
@@ -920,6 +922,8 @@
      <path id="irLineTotal" fill="none" stroke="#6E8BFF" stroke-width="2.5" stroke-linejoin="round"></path>
      <path id="irLineCon" fill="none" stroke="#8B93A9" stroke-width="1.6" stroke-dasharray="4 4" stroke-linejoin="round"></path>
      <circle id="irEndDot" r="5" fill="#14B8A6" stroke="#0a0e1f" stroke-width="2"></circle>
+     <line id="irTargetLine" x1="0" y1="0" x2="0" y2="0" stroke="#22C55E" stroke-width="1.6" stroke-dasharray="3 5" opacity="0"></line>
+     <text id="irTargetLabel" class="axis" x="0" y="0" fill="#22C55E" font-weight="600" opacity="0">25× target</text>
      <g id="irXlabels"></g>
      <g id="irYlabels"></g>
     </svg>
@@ -934,8 +938,10 @@
     <div class="rw-ctrl"><div class="rw-top"><span>Monthly contribution</span><b id="irvMon">$500</b></div><input type="range" id="irMon" min="0" max="3000" step="25" value="500"></div>
     <div class="rw-ctrl"><div class="rw-top"><span>Time horizon</span><b id="irvYr">30 yrs</b></div><input type="range" id="irYr" min="5" max="40" step="1" value="30"></div>
     <div class="rw-ctrl rate"><div class="rw-top"><span>Expected annual return</span><b id="irvRate">8%</b></div><input type="range" id="irRate" min="3" max="12" step="0.5" value="8"></div>
+    <div class="rw-ctrl"><div class="rw-top"><span>Your annual income (optional)</span><b id="irvInc">$0</b></div><input type="range" id="irInc" min="0" max="500000" step="5000" value="0"></div>
    </div>
-   <p class="rw-note">Assumes monthly compounding and steady contributions. A projection for planning — not investment advice.</p>
+   <div id="irVerdict" class="rw-verdict" hidden></div>
+   <p class="rw-note">Assumes monthly compounding and steady contributions. The S&amp;P 500 has returned ~10%/yr before inflation (~7% after) over the long run; future returns are not guaranteed and inflation reduces the real value of these figures. A projection for planning — not investment advice.</p>
   </div>
  </div>
 </section>
@@ -950,10 +956,11 @@
   <div class="io-track">
    <div class="io-step" style="--ac:#22C55E"><div class="io-node">1</div><div class="io-card"><div class="io-where">401(k) match</div><div class="io-note">Free money from your employer.</div><span class="io-tag">100% ROI</span></div></div>
    <div class="io-step" style="--ac:#F59E0B"><div class="io-node">2</div><div class="io-card"><div class="io-where">High-interest debt</div><div class="io-note">Pay off anything above ~10%.</div><span class="io-tag">10%+</span></div></div>
-   <div class="io-step" style="--ac:#5C7CFA"><div class="io-node">3</div><div class="io-card"><div class="io-where">Roth IRA</div><div class="io-note">Tax-free growth, up to the limit.</div><span class="io-tag">$7,000/yr</span></div></div>
-   <div class="io-step" style="--ac:#6E8BFF"><div class="io-node">4</div><div class="io-card"><div class="io-where">401(k) — again</div><div class="io-note">Max it out beyond the match.</div><span class="io-tag">$23,500</span></div></div>
+   <div class="io-step" style="--ac:#5C7CFA"><div class="io-node">3</div><div class="io-card"><div class="io-where">Roth IRA</div><div class="io-note">Tax-free growth, up to the 2026 limit. Subject to income phase-out (~$150k single / $236k joint MAGI); +$1,000 catch-up at age 50+.</div><span class="io-tag">$7,500/yr</span></div></div>
+   <div class="io-step" style="--ac:#6E8BFF"><div class="io-node">4</div><div class="io-card"><div class="io-where">401(k) — again</div><div class="io-note">Max it out beyond the match. +$7,500 catch-up at age 50+, $11,250 at 60-63.</div><span class="io-tag">$23,500</span></div></div>
    <div class="io-step" style="--ac:#8B93A9"><div class="io-node">5</div><div class="io-card"><div class="io-where">Brokerage</div><div class="io-note">Taxed, but flexible. No cap.</div><span class="io-tag">Flexible</span></div></div>
   </div>
+  <p class="io-crosslinks">Already saving? See your <a href="https://visionfinance.app/holding/SPY">tax-aware sell simulator</a> · <a href="https://visionfinance.app/cashflow">cashflow forecast</a> · <a href="https://visionfinance.app/budget">monthly budget</a>.</p>
  </div>
 </div>
 </section>
@@ -979,7 +986,8 @@
  <h5>Company</h5>
  <ul>
  <li><a href="about.html">About</a></li>
- <li><a href="future.html">Roadmap</a></li>
+ <li><a href="couples.html">For Couples</a></li>
+ <li><a href="future.html">Retirement</a></li>
  </ul>
  </div>
 
@@ -1038,7 +1046,7 @@
 (function(){
  var g=function(id){return document.getElementById(id);};
  if(!g('irChart')) return;
- var ov={cur:null,mon:null,yr:null,rate:null};
+ var ov={cur:null,mon:null,yr:null,rate:null,inc:null};
  var fmt=function(n){return '$'+Math.round(n).toLocaleString('en-US');};
  var fmtShort=function(n){ if(n>=1e9) return '$'+(n/1e9).toFixed(1)+'B'; if(n>=1e6) return '$'+(n/1e6).toFixed(n>=1e7?0:1)+'M'; if(n>=1e3) return '$'+Math.round(n/1e3)+'k'; return '$'+Math.round(n); };
  var W=360,H=150,padL=36,padR=10,padT=12,padB=22;
@@ -1046,8 +1054,10 @@
  function redraw(){
   var P=ov.cur!=null?ov.cur:Math.round((Math.pow(100000001,(+g('irCur').value)/1000)-1)/100)*100;
   var monthly=ov.mon!=null?ov.mon:+g('irMon').value, years=ov.yr!=null?ov.yr:+g('irYr').value, rate=ov.rate!=null?ov.rate:+g('irRate').value;
-  g('irvCur').textContent=fmt(P); g('irvMon').textContent=fmt(monthly); g('irvYr').textContent=years+' yrs'; g('irvRate').textContent=rate+'%';
-  var pts=project(P,monthly,years,rate),last=pts[pts.length-1],maxY=Math.max(last.bal,1);
+  var income=ov.inc!=null?ov.inc:+g('irInc').value;
+  g('irvCur').textContent=fmt(P); g('irvMon').textContent=fmt(monthly); g('irvYr').textContent=years+' yrs'; g('irvRate').textContent=rate+'%'; g('irvInc').textContent=income>0?fmt(income):'(skip)';
+  var target=income*25;
+  var pts=project(P,monthly,years,rate),last=pts[pts.length-1],maxY=Math.max(last.bal,target,1);
   g('irTotal').textContent=fmt(last.bal); g('irContrib').textContent=fmt(last.con); g('irGrowth').textContent='+'+fmt(last.bal-last.con);
   var x=function(yr){return padL+(yr/years)*(W-padL-padR);}, y=function(v){return H-padB-(v/maxY)*(H-padT-padB);};
   var tp=pts.map(function(p){return x(p.y)+','+y(p.bal);}), cp=pts.map(function(p){return x(p.y)+','+y(p.con);}), baseY=y(0);
@@ -1059,13 +1069,32 @@
   g('irGrid').innerHTML=grid; g('irYlabels').innerHTML=yl;
   var xl='',ticks=[0,Math.round(years/2),years]; ticks.forEach(function(t){ xl+='<text class="axis" x="'+x(t)+'" y="'+(H-6)+'" text-anchor="middle">'+(t===0?'Now':('Yr '+t))+'</text>'; });
   g('irXlabels').innerHTML=xl;
+  // "Are you on track?" — target = 25× annual income.
+  var tline=g('irTargetLine'), tlabel=g('irTargetLabel'), verdict=g('irVerdict');
+  if(income>0){
+   var ty=y(target);
+   tline.setAttribute('x1',padL); tline.setAttribute('x2',W-padR);
+   tline.setAttribute('y1',ty); tline.setAttribute('y2',ty);
+   tline.setAttribute('opacity','1');
+   tlabel.setAttribute('x',W-padR-2); tlabel.setAttribute('y',ty-4);
+   tlabel.setAttribute('text-anchor','end'); tlabel.setAttribute('opacity','1');
+   var onTrack=last.bal>=target, pct=Math.min(999,Math.round(100*last.bal/target));
+   verdict.hidden=false;
+   if(onTrack){
+    verdict.innerHTML='<strong style="color:#22C55E">On track.</strong> Projected balance ('+fmt(last.bal)+') covers your 25× retirement target of '+fmt(target)+'.';
+   } else {
+    verdict.innerHTML='<strong style="color:#F59E0B">'+pct+'% of the way.</strong> Projected balance ('+fmt(last.bal)+') is '+fmt(target-last.bal)+' short of the 25× target ('+fmt(target)+'). Try a higher monthly contribution or longer time horizon.';
+   }
+  } else {
+   tline.setAttribute('opacity','0'); tlabel.setAttribute('opacity','0'); verdict.hidden=true;
+  }
  }
- var ovKey={irCur:'cur',irMon:'mon',irYr:'yr',irRate:'rate'};
- ['irCur','irMon','irYr','irRate'].forEach(function(id){ g(id).addEventListener('input',function(){ ov[ovKey[id]]=null; redraw(); }); });
+ var ovKey={irCur:'cur',irMon:'mon',irYr:'yr',irRate:'rate',irInc:'inc'};
+ ['irCur','irMon','irYr','irRate','irInc'].forEach(function(id){ g(id).addEventListener('input',function(){ ov[ovKey[id]]=null; redraw(); }); });
  function num(s){ var v=parseFloat(String(s).replace(/[^0-9.]/g,'')); return isNaN(v)?null:v; }
  function clampSlider(id,v){ var el=g(id); if(id==='irCur'){ var pos=Math.round(1000*Math.log(Math.min(v,100000000)+1)/Math.log(100000001)); el.value=Math.max(0,Math.min(1000,pos)); } else { el.value=Math.max(+el.min,Math.min(+el.max,v)); } }
  function attachEdit(labelId,sliderId,key,isRate){ var b=g(labelId); b.title='Double-click to type any value'; b.style.cursor='pointer'; b.addEventListener('dblclick',function(){ var inp=document.createElement('input'); inp.type='text'; inp.value=String(num(b.textContent)||''); inp.style.cssText='width:96px;font:inherit;color:var(--text);background:var(--surface-2);border:1px solid var(--primary);border-radius:6px;padding:1px 6px'; b.textContent=''; b.appendChild(inp); inp.focus(); inp.select(); var done=false; function commit(){ if(done)return; done=true; var v=num(inp.value); if(v!=null&&v>=0){ ov[key]=isRate?v:Math.round(v); clampSlider(sliderId,ov[key]); } redraw(); } inp.addEventListener('keydown',function(e){ if(e.key==='Enter'){commit();} else if(e.key==='Escape'){done=true;redraw();} }); inp.addEventListener('blur',commit); }); }
- attachEdit('irvCur','irCur','cur',false); attachEdit('irvMon','irMon','mon',false); attachEdit('irvYr','irYr','yr',false); attachEdit('irvRate','irRate','rate',true);
+ attachEdit('irvCur','irCur','cur',false); attachEdit('irvMon','irMon','mon',false); attachEdit('irvYr','irYr','yr',false); attachEdit('irvRate','irRate','rate',true); attachEdit('irvInc','irInc','inc',false);
  redraw();
 })();
 </script>
